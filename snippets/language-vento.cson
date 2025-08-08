@@ -1,0 +1,99 @@
+'.text.html.vento':
+  'if':
+    prefix: 'if'
+    body: """
+    {{ if ${1:condition} }}
+      $0
+    {{ /if }}
+    """
+  'if (trim)':
+    prefix: 'if-'
+    body: """
+    {{- if ${1:condition} -}}
+      $0
+    {{- /if -}}
+    """
+  'for':
+    prefix: 'for'
+    body: """
+    {{ for ${1:item} of ${2:collection} }}
+      $0
+    {{ /for }}
+    """
+  'for (trim)':
+    prefix: 'for-'
+    body: """
+    {{- for ${1:item} of ${2:collection} -}}
+      $0
+    {{- /for -}}
+    """
+  'layout':
+    prefix: 'layout'
+    body: """
+    {{ layout "${1:file}.vto" ${2:{ $3 }} }}
+      $0
+    {{ /layout }}
+    """
+  'layout (trim)':
+    prefix: 'layout-'
+    body: """
+    {{- layout "${1:file}.vto" ${2:{ $3 }} -}}
+      $0
+    {{- /layout -}}
+    """
+  'include':
+    prefix: 'include'
+    body: '{{ include "${1:file}.vto" ${2:{ $3 }} }}'
+  'include (trim)':
+    prefix: 'include-'
+    body: '{{- include "${1:file}.vto" ${2:{ $3 }} -}}'
+  'comment':
+    prefix: '#'
+    body: '{{# $0 #}}'
+  'comment (trim)':
+    prefix: '#-'
+    body: '{{#- $0 -#}}'
+  'function':
+    prefix: 'f'
+    body: """
+    {{ function ${1:name}($2) }}
+      $0
+    {{ /function }}
+    """
+  'function (trim)':
+    prefix: 'f-'
+    body: """
+    {{- function ${1:name}($2) -}}
+      $0
+    {{- /function -}}
+    """
+  'import':
+    prefix: 'imp'
+    body: '{{ import ${1:{ item }} from "${2:file}.vto" }}'
+  'import (trim)':
+    prefix: 'imp'
+    body: '{{- import ${1:{ item }} from "${2:file}.vto" -}}'
+  'export':
+    prefix: 'exp'
+    body: '{{ export ${1:name} = ${2:"value"} }}'
+  'export (trim)':
+    prefix: 'exp'
+    body: '{{- export ${1:name} = ${2:"value"} -}}'
+  'javascript tag':
+    prefix: '>'
+    body: '{{> $0 }}'
+  'javascript tag (trim)':
+    prefix: '>-'
+    body: '{{-> $0 -}}'
+  'output tag':
+    prefix: '='
+    body: '{{ $0 }}'
+  'output tag (trim)':
+    prefix: '-'
+    body: '{{- $0 -}}'
+  'set':
+    prefix: 'set'
+    body: '{{ set  ${1:name} = ${2:"value"} }}'
+  'set (trim)':
+    prefix: 'set-'
+    body: '{{- set  ${1:name} = ${2:"value"} -}}'

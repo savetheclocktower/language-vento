@@ -1,0 +1,20 @@
+name: 'HTML (Vento)'
+scopeName: 'text.html.vento'
+type: 'modern-tree-sitter'
+parser: 'tree-sitter-vento'
+
+treeSitter:
+  parserSource: 'github:ventojs/tree-sitter-vento#3b32474bc29584ea214e4e84b47102408263fe0e'
+  grammar: 'tree-sitter/tree-sitter-vento.wasm'
+  highlightsQuery: 'tree-sitter/highlights.scm'
+  foldsQuery: 'tree-sitter/folds.scm'
+  indentsQuery: 'tree-sitter/indents.scm'
+  tagsQuery: 'tree-sitter/tags.scm'
+
+
+fileTypes: [
+  'vto'
+]
+
+comments:
+  block: ['{{#', '#}}']

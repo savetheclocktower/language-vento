@@ -1,6 +1,6 @@
 {
   "name": "language-vento",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "lib/main",
   "description": "Vento language support in Pulsar",
   "keywords": [

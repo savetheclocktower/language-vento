@@ -13,6 +13,24 @@
   (else_if_tag)
 ] @dedent @indent
 
+; Indent properly in the case of something like:
+;
+; {{>
+;   // (arbitrary JavaScript)
+; }}
+;
+; or
+;
+; {{#
+;   (very long comment)
+; #}}
+
+(["{{" "{{-" "{{>" "{{->" "{{#" "{{#-" ] @indent
+  (#is? test.lastTextOnRow))
+
+(["}}" "-}}" "#}}" "-#}}"] @dedent
+  (#is? test.firstTextOnRow))
+
 ; End tags should match the indentation level of their corresponding start
 ; tags.
 ([
